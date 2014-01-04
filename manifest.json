@@ -1,0 +1,944 @@
+/*
+IntList::IntList() {
+    head = 0;
+    tail = 0;
+}
+
+IntList::IntList(const IntList &copy) {
+    head = 0;
+    tail = 0;
+    for(IntNode* curr = copy.head; curr; curr = curr->next)
+    {
+        push_back(curr->data);
+    }
+}
+
+IntList::~IntList() {
+    while(head)
+    { pop_front(); }
+}
+
+//const IntList IntList::operator=(const IntList & rhs) {
+    
+//}
+
+void IntList::display() const {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        cout << curr->data << " " ;
+    }
+}
+
+void IntList::push_front(int value) {
+    IntNode* temp = new IntNode(value);
+    if(head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    temp->next = head;
+    head = temp;
+}
+
+void IntList::push_back(int value) {
+    IntNode* temp = new IntNode(value);
+    if(!head)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    
+    tail->next = temp;
+    tail = temp;
+    
+}
+
+void IntList::pop_front() {
+    if(!head)
+    { return; }
+    IntNode* temp = head;
+    head = head->next;
+    delete temp;
+    if(head == 0)
+    { tail = 0; }
+}
+
+void IntList::select_sort() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* m = curr;
+        for(IntNode* temp = curr->next; temp != 0; temp = temp->next)
+        {
+            if(m->data > temp->data)
+            {
+                m = temp;
+            }
+        }
+        int dat = curr->data;
+        curr->data = m->data;
+        m->data = dat;
+    }
+}
+
+void IntList::insert_sorted(int value) {
+    if(value <= head->data)
+    {
+        push_front(value);
+    }
+    else if(value >= tail->data)
+    {
+        push_back(value);
+    }
+    else
+    {
+        IntNode* temp = new IntNode(value);
+        for(IntNode* curr = head; curr != 0; curr = curr->next)
+        {
+            if(curr->next->data > temp->data)
+            {
+                temp->next = curr->next;
+                curr->next = temp;
+                break;
+            }
+        }
+    }
+}
+
+void IntList::remove_duplicates() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* temp = curr;
+        for(IntNode* m = curr->next; m != 0; m = m->next)
+        {
+            if(curr->data == m->data)
+            {
+                if(m->next == 0)
+                {
+                    curr->next = 0;
+                    delete m;
+                }
+                else
+                {
+                    temp->next = m->next;
+                    delete m;
+                    m = temp;
+                }
+            }
+        }
+    }
+}
+
+void clear() {
+    
+}
+*/
+/*
+void IntList::remove(int value) {
+    IntNode* curr = head;
+    if(curr == head)
+    {
+        if(curr->data == value)
+        {
+            curr = curr->next;
+            head = curr;
+        }
+        //else
+        //{
+         //   curr = curr->next;
+        //}
+    }
+    
+    while(curr->next != 0 && curr->next->data != value)
+    {
+        curr = curr->next; 
+    }
+    if(curr->next != 0)
+    {
+    curr->next = curr->next->next;
+    }
+    
+   
+    /*while(curr != 0)
+    {
+        IntNode* temp = curr;
+        while(head->next == curr)
+        {
+            if(curr->data == value)
+            {
+                head->next = curr->next;
+                temp = head;
+            }
+            curr = curr->next;
+        }
+        curr = curr->next;
+        
+        /*
+        IntNode* temp = curr->next;
+        
+        if(temp->data == value)
+        {
+            curr->next = temp->next;
+        }
+        curr = curr->next;
+        */
+    //}
+//}
+/*
+void IntList::reverse() {
+    
+    if(head == NULL)
+    return;
+
+    IntNode *prev = NULL, *current = NULL, *next = NULL;
+    current = head;
+    
+    while(current != NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    head = prev;
+    
+}
+
+IntNode* IntList::getHead() {
+    return head;
+}
+
+void IntList::recursive_reverse() {
+    IntNode* a = head;
+    IntNode* b = tail;
+    recursive_reverse(a,b);
+}
+
+IntNode* IntList::recursive_reverse(IntNode* rest, IntNode* reversed) {
+    
+    IntNode *current;
+
+    if (rest == NULL)
+        return reversed;
+
+    current = rest;
+    rest = rest->next;
+    current->next = reversed;
+
+    recursive_reverse(rest, current);
+}
+*/
+
+/*
+IntList::IntList() {
+    head = 0;
+    tail = 0;
+}
+
+IntList::IntList(const IntList &copy) {
+    head = 0;
+    tail = 0;
+    for(IntNode* curr = copy.head; curr; curr = curr->next)
+    {
+        push_back(curr->data);
+    }
+}
+
+IntList::~IntList() {
+    while(head)
+    { pop_front(); }
+}
+
+//const IntList IntList::operator=(const IntList & rhs) {
+    
+//}
+
+void IntList::display() const {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        cout << curr->data << " " ;
+    }
+}
+
+void IntList::push_front(int value) {
+    IntNode* temp = new IntNode(value);
+    if(head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    temp->next = head;
+    head = temp;
+}
+
+void IntList::push_back(int value) {
+    IntNode* temp = new IntNode(value);
+    if(!head)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    
+    tail->next = temp;
+    tail = temp;
+    
+}
+
+void IntList::pop_front() {
+    if(!head)
+    { return; }
+    IntNode* temp = head;
+    head = head->next;
+    delete temp;
+    if(head == 0)
+    { tail = 0; }
+}
+
+void IntList::select_sort() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* m = curr;
+        for(IntNode* temp = curr->next; temp != 0; temp = temp->next)
+        {
+            if(m->data > temp->data)
+            {
+                m = temp;
+            }
+        }
+        int dat = curr->data;
+        curr->data = m->data;
+        m->data = dat;
+    }
+}
+
+void IntList::insert_sorted(int value) {
+    if(value <= head->data)
+    {
+        push_front(value);
+    }
+    else if(value >= tail->data)
+    {
+        push_back(value);
+    }
+    else
+    {
+        IntNode* temp = new IntNode(value);
+        for(IntNode* curr = head; curr != 0; curr = curr->next)
+        {
+            if(curr->next->data > temp->data)
+            {
+                temp->next = curr->next;
+                curr->next = temp;
+                break;
+            }
+        }
+    }
+}
+
+void IntList::remove_duplicates() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* temp = curr;
+        for(IntNode* m = curr->next; m != 0; m = m->next)
+        {
+            if(curr->data == m->data)
+            {
+                if(m->next == 0)
+                {
+                    curr->next = 0;
+                    delete m;
+                }
+                else
+                {
+                    temp->next = m->next;
+                    delete m;
+                    m = temp;
+                }
+            }
+        }
+    }
+}
+
+void clear() {
+    
+}
+*/
+/*
+void IntList::remove(int value) {
+    IntNode* curr = head;
+    if(curr == head)
+    {
+        if(curr->data == value)
+        {
+            curr = curr->next;
+            head = curr;
+        }
+        //else
+        //{
+         //   curr = curr->next;
+        //}
+    }
+    
+    while(curr->next != 0 && curr->next->data != value)
+    {
+        curr = curr->next; 
+    }
+    if(curr->next != 0)
+    {
+    curr->next = curr->next->next;
+    }
+    
+   
+    /*while(curr != 0)
+    {
+        IntNode* temp = curr;
+        while(head->next == curr)
+        {
+            if(curr->data == value)
+            {
+                head->next = curr->next;
+                temp = head;
+            }
+            curr = curr->next;
+        }
+        curr = curr->next;
+        
+        /*
+        IntNode* temp = curr->next;
+        
+        if(temp->data == value)
+        {
+            curr->next = temp->next;
+        }
+        curr = curr->next;
+        */
+    //}
+//}
+/*
+void IntList::reverse() {
+    
+    if(head == NULL)
+    return;
+
+    IntNode *prev = NULL, *current = NULL, *next = NULL;
+    current = head;
+    
+    while(current != NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    head = prev;
+    
+}
+
+IntNode* IntList::getHead() {
+    return head;
+}
+
+void IntList::recursive_reverse() {
+    IntNode* a = head;
+    IntNode* b = tail;
+    recursive_reverse(a,b);
+}
+
+IntNode* IntList::recursive_reverse(IntNode* rest, IntNode* reversed) {
+    
+    IntNode *current;
+
+    if (rest == NULL)
+        return reversed;
+
+    current = rest;
+    rest = rest->next;
+    current->next = reversed;
+
+    recursive_reverse(rest, current);
+}
+*/
+
+
+
+{
+  "name": "footlocker",
+  "manifest_version": 2,
+  "version": "1",
+  "content_scripts": [
+    {
+      "matches": ["http://www.footlocker.com/*"],
+      "js": ["footadd.js"]
+    }
+  ], "permissions": [
+    "tabs", "http://www.footlocker.com/*"
+  ]
+}
+
+
+
+/*
+IntList::IntList() {
+    head = 0;
+    tail = 0;
+}
+
+IntList::IntList(const IntList &copy) {
+    head = 0;
+    tail = 0;
+    for(IntNode* curr = copy.head; curr; curr = curr->next)
+    {
+        push_back(curr->data);
+    }
+}
+
+IntList::~IntList() {
+    while(head)
+    { pop_front(); }
+}
+
+//const IntList IntList::operator=(const IntList & rhs) {
+    
+//}
+
+void IntList::display() const {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        cout << curr->data << " " ;
+    }
+}
+
+void IntList::push_front(int value) {
+    IntNode* temp = new IntNode(value);
+    if(head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    temp->next = head;
+    head = temp;
+}
+
+void IntList::push_back(int value) {
+    IntNode* temp = new IntNode(value);
+    if(!head)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    
+    tail->next = temp;
+    tail = temp;
+    
+}
+
+void IntList::pop_front() {
+    if(!head)
+    { return; }
+    IntNode* temp = head;
+    head = head->next;
+    delete temp;
+    if(head == 0)
+    { tail = 0; }
+}
+
+void IntList::select_sort() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* m = curr;
+        for(IntNode* temp = curr->next; temp != 0; temp = temp->next)
+        {
+            if(m->data > temp->data)
+            {
+                m = temp;
+            }
+        }
+        int dat = curr->data;
+        curr->data = m->data;
+        m->data = dat;
+    }
+}
+
+void IntList::insert_sorted(int value) {
+    if(value <= head->data)
+    {
+        push_front(value);
+    }
+    else if(value >= tail->data)
+    {
+        push_back(value);
+    }
+    else
+    {
+        IntNode* temp = new IntNode(value);
+        for(IntNode* curr = head; curr != 0; curr = curr->next)
+        {
+            if(curr->next->data > temp->data)
+            {
+                temp->next = curr->next;
+                curr->next = temp;
+                break;
+            }
+        }
+    }
+}
+
+void IntList::remove_duplicates() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* temp = curr;
+        for(IntNode* m = curr->next; m != 0; m = m->next)
+        {
+            if(curr->data == m->data)
+            {
+                if(m->next == 0)
+                {
+                    curr->next = 0;
+                    delete m;
+                }
+                else
+                {
+                    temp->next = m->next;
+                    delete m;
+                    m = temp;
+                }
+            }
+        }
+    }
+}
+
+void clear() {
+    
+}
+*/
+/*
+void IntList::remove(int value) {
+    IntNode* curr = head;
+    if(curr == head)
+    {
+        if(curr->data == value)
+        {
+            curr = curr->next;
+            head = curr;
+        }
+        //else
+        //{
+         //   curr = curr->next;
+        //}
+    }
+    
+    while(curr->next != 0 && curr->next->data != value)
+    {
+        curr = curr->next; 
+    }
+    if(curr->next != 0)
+    {
+    curr->next = curr->next->next;
+    }
+    
+   
+    /*while(curr != 0)
+    {
+        IntNode* temp = curr;
+        while(head->next == curr)
+        {
+            if(curr->data == value)
+            {
+                head->next = curr->next;
+                temp = head;
+            }
+            curr = curr->next;
+        }
+        curr = curr->next;
+        
+        /*
+        IntNode* temp = curr->next;
+        
+        if(temp->data == value)
+        {
+            curr->next = temp->next;
+        }
+        curr = curr->next;
+        */
+    //}
+//}
+/*
+void IntList::reverse() {
+    
+    if(head == NULL)
+    return;
+
+    IntNode *prev = NULL, *current = NULL, *next = NULL;
+    current = head;
+    
+    while(current != NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    head = prev;
+    
+}
+
+IntNode* IntList::getHead() {
+    return head;
+}
+
+void IntList::recursive_reverse() {
+    IntNode* a = head;
+    IntNode* b = tail;
+    recursive_reverse(a,b);
+}
+
+IntNode* IntList::recursive_reverse(IntNode* rest, IntNode* reversed) {
+    
+    IntNode *current;
+
+    if (rest == NULL)
+        return reversed;
+
+    current = rest;
+    rest = rest->next;
+    current->next = reversed;
+
+    recursive_reverse(rest, current);
+}
+*/
+/*
+IntList::IntList() {
+    head = 0;
+    tail = 0;
+}
+
+IntList::IntList(const IntList &copy) {
+    head = 0;
+    tail = 0;
+    for(IntNode* curr = copy.head; curr; curr = curr->next)
+    {
+        push_back(curr->data);
+    }
+}
+
+IntList::~IntList() {
+    while(head)
+    { pop_front(); }
+}
+
+//const IntList IntList::operator=(const IntList & rhs) {
+    
+//}
+
+void IntList::display() const {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        cout << curr->data << " " ;
+    }
+}
+
+void IntList::push_front(int value) {
+    IntNode* temp = new IntNode(value);
+    if(head == NULL)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    temp->next = head;
+    head = temp;
+}
+
+void IntList::push_back(int value) {
+    IntNode* temp = new IntNode(value);
+    if(!head)
+    {
+        head = temp;
+        tail = temp;
+        return;
+    }
+    
+    tail->next = temp;
+    tail = temp;
+    
+}
+
+void IntList::pop_front() {
+    if(!head)
+    { return; }
+    IntNode* temp = head;
+    head = head->next;
+    delete temp;
+    if(head == 0)
+    { tail = 0; }
+}
+
+void IntList::select_sort() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* m = curr;
+        for(IntNode* temp = curr->next; temp != 0; temp = temp->next)
+        {
+            if(m->data > temp->data)
+            {
+                m = temp;
+            }
+        }
+        int dat = curr->data;
+        curr->data = m->data;
+        m->data = dat;
+    }
+}
+
+void IntList::insert_sorted(int value) {
+    if(value <= head->data)
+    {
+        push_front(value);
+    }
+    else if(value >= tail->data)
+    {
+        push_back(value);
+    }
+    else
+    {
+        IntNode* temp = new IntNode(value);
+        for(IntNode* curr = head; curr != 0; curr = curr->next)
+        {
+            if(curr->next->data > temp->data)
+            {
+                temp->next = curr->next;
+                curr->next = temp;
+                break;
+            }
+        }
+    }
+}
+
+void IntList::remove_duplicates() {
+    for(IntNode* curr = head; curr != 0; curr = curr->next)
+    {
+        IntNode* temp = curr;
+        for(IntNode* m = curr->next; m != 0; m = m->next)
+        {
+            if(curr->data == m->data)
+            {
+                if(m->next == 0)
+                {
+                    curr->next = 0;
+                    delete m;
+                }
+                else
+                {
+                    temp->next = m->next;
+                    delete m;
+                    m = temp;
+                }
+            }
+        }
+    }
+}
+
+void clear() {
+    
+}
+*/
+/*
+void IntList::remove(int value) {
+    IntNode* curr = head;
+    if(curr == head)
+    {
+        if(curr->data == value)
+        {
+            curr = curr->next;
+            head = curr;
+        }
+        //else
+        //{
+         //   curr = curr->next;
+        //}
+    }
+    
+    while(curr->next != 0 && curr->next->data != value)
+    {
+        curr = curr->next; 
+    }
+    if(curr->next != 0)
+    {
+    curr->next = curr->next->next;
+    }
+    
+   
+    /*while(curr != 0)
+    {
+        IntNode* temp = curr;
+        while(head->next == curr)
+        {
+            if(curr->data == value)
+            {
+                head->next = curr->next;
+                temp = head;
+            }
+            curr = curr->next;
+        }
+        curr = curr->next;
+        
+        /*
+        IntNode* temp = curr->next;
+        
+        if(temp->data == value)
+        {
+            curr->next = temp->next;
+        }
+        curr = curr->next;
+        */
+    //}
+//}
+/*
+void IntList::reverse() {
+    
+    if(head == NULL)
+    return;
+
+    IntNode *prev = NULL, *current = NULL, *next = NULL;
+    current = head;
+    
+    while(current != NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    head = prev;
+    
+}
+
+IntNode* IntList::getHead() {
+    return head;
+}
+
+void IntList::recursive_reverse() {
+    IntNode* a = head;
+    IntNode* b = tail;
+    recursive_reverse(a,b);
+}
+
+IntNode* IntList::recursive_reverse(IntNode* rest, IntNode* reversed) {
+    
+    IntNode *current;
+
+    if (rest == NULL)
+        return reversed;
+
+    current = rest;
+    rest = rest->next;
+    current->next = reversed;
+
+    recursive_reverse(rest, current);
+}
+*/
